@@ -1,0 +1,36 @@
+<html>
+    <head><title> App </title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <h2 class="card-title text-center">Liste des projets </h2>
+    
+        {% for projet in projets %}
+        <li class="list-group-item list-group-item-secondary"><strong>Nom:</strong> {{projet.title}} <br>
+        <strong>Responsable:</strong> {{projet.responsable.first}} <br>
+        <strong>Statut:</strong> {{projet.statut_projet}} <br>
+        <a href="{% url 'detailsProjet' projet_id=projet.id %}" id="btnVoirProjet" class="stretched-link text-info">Détails</a>
+        </li>
+    
+        <a href="{% url 'modifierProjet' projet_id=projet.id %}">
+            <button id="modifierProjet" type="button" class="btn btn-info">Modifier le projet</button>
+        </a>
+        <a href="{% url 'supprimerUnProjet' projet_id=projet.id %}">
+            <button type="button" class="btn btn-danger" id="btnSupprimerProjet">Supprimer le projet</button>
+        </a>
+        {% endfor %}
+        <a href="{% url 'ajouterUnProjet' %}">
+            <button id="btnAjouterProjet" type="button" class="btn btn-info">Ajouter un projet</button>
+        </a>
+        <a href="{% url 'ajouterResponsable' %}">
+            <button id="btnAjouterResponsable" type="button" class="btn btn-info">Ajouter un Responsable</button>
+        </a>
+        <a href="{% url 'ajouterDeveloppeur' %}">
+            <button id="btnAjouterDeveloppeur" type="button" class="btn btn-info">Ajouter un Developpeur</button>
+        </a>
+        
+
+
+    </body>
+    </html>
