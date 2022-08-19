@@ -1,7 +1,8 @@
 #!/bin/bash
 #pour pouvoir exécuter le fichier bash, il faut le placer dans le répertoire de travail GIT ou le rendre global
 # récupérer la branche courrante et push
-current_branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+#current_branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+current_branch=$(git branch --show-current)
 
 # git pull
 git pull origin "$current_branch"
