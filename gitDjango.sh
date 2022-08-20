@@ -1,6 +1,7 @@
 #!/bin/bash
 #pour pouvoir exécuter le fichier bash, il faut le placer dans le répertoire de travail GIT ou le rendre global
-# récupérer la branche courrante et push
+
+# récupérer la branche courrante
 current_branch=$(git branch --show-current)
 
 # git pull
