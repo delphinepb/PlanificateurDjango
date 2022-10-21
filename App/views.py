@@ -3,7 +3,7 @@ from urllib import request
 from django.shortcuts import render
 from django.http import HttpResponse
 from App.forms import FormDeveloppeur, FormProjet, FormResponsable, FormTache
-from App.models import Projet, Relation_Projet_Tache, Tache
+from App.models import Tache, Projet, Relation_Projet_Tache
 from django.shortcuts import redirect
 
 def projets(request):
@@ -85,3 +85,4 @@ def modifierProjet(request, projet_id):
     else:
         formData = FormProjet(instance=projet)
         return render(request,'formProjet.html',{'formProjet': formData})       
+
