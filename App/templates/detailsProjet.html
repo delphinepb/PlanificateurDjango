@@ -2,30 +2,38 @@
 <html>
     <head>
         <title> DétailsProjet </title>
+        <link rel="stylesheet" href="src/style.css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
-    <body>
-    <a href="{% url 'projets'%}">Liste projets</a>
-    <h2 class="card-title text-center">Détails Projet : </h2>
-    <li class="list-group-item list-group-item-secondary">
-        <strong>Nom: </strong>{{projet.title}}<br>
-        <strong>Responsable:</strong> {{projet.responsable.first}}<br>
-        <strong>Statut: </strong> {{projet.statut_projet}}
-    </li> 
-    <li class="list-group-item list-group-item-light">
-        Tâches :
-        {% for tache in projet.taches.all %}
-        <strong>Nom tâche: </strong>{{tache.name}}<br>
-        <a href="{% url 'detailsTache' tache_id=tache.id %}" id="btnVoirProjet" class="button">Détails</a><br>
-        <a href="{% url 'supprimerUneTache' tache_id=tache.id projet_id=projet.id %}">
-            <button id="btnSupprimerProjet" type="button" class="btn btn-danger">Supprimer la tâche</button><br>
-        </a>
-        {% endfor %}
-        
-        <br><br>
-    </li>
-    <a href="{% url 'ajouterUneTache' projet_id=projet.id %}">
-        <button id="btnAjouterProjet" type="button" class="btn btn-info">Ajouter une tâche</button>
-    </a>
+    <body style="background-color: #1c1d25;">
+        <div class="container">
+            
+            <h2  style="color:white;" class="card-title text-center">Détails Projet </h2>
+            <div style="background-color: rgb(190, 187, 187);" class="card-body">
+            <li  class="list-group-item list-group-item-secondary">
+                <strong>Nom: </strong>{{projet.title}}<br>
+                <strong>Responsable:</strong> {{projet.responsable.first}}<br>
+                <strong>Statut: </strong> {{projet.statut_projet}}
+            </li> 
+            <li  class="list-group-item list-group-item-light">
+                Tâches :
+                {% for tache in projet.taches.all %}
+                <strong>Nom tâche: </strong>{{tache.name}}<br>
+                <a href="{% url 'detailsTache' tache_id=tache.id %}" id="btnVoirProjet" class="btn btn-secondary" style="margin-bottom: 5px;">Détails</a><br>
+                <a href="{% url 'supprimerUneTache' tache_id=tache.id projet_id=projet.id %}">
+                    <button id="btnSupprimerProjet" type="button" class="btn btn-danger">Supprimer la tâche</button><br>
+                </a>
+                {% endfor %}    
+                <br><br>
+            </li>
+            <a href="{% url 'ajouterUneTache' projet_id=projet.id %}">
+                <button style="margin-top: 5px;" id="btnAjouterProjet" type="button" class="btn btn-secondary">Ajouter une tâche</button>
+            </a>
+            </div>
+            <a type="button" class="btn"
+            style="margin-top: 5px; background-color: coral !important; float: right;" 
+             href="{% url 'projets'%}">Liste projets</a>
+        </div>
+
     </body>
     </html>
